@@ -51,6 +51,6 @@ Add-Content -Path $Log -Value "`r`n** SERVIDORES QUE NUNCA SE COMUNICARAM COM WS
 Get-WsusComputer -FromLastReportedStatusTime 01/01/0001 -ToLastReportedStatusTime 01/01/0001 | Where {$_.OSDescription -like "*Windows Server*"} | Sort-Object LastReportedStatusTime | Out-File $Log -Append utf8
 
 
-Write-Progress -Activity 'Efetuando a limpeza dos updates, este processo pode demorar...' -PercentComplete -1
+Write-Progress -Activity 'Efetuando a limpeza, este processo pode demorar...' -PercentComplete -1
 
 Invoke-WsusServerCleanup -CleanupObsoleteComputers -CleanupObsoleteUpdates -CleanupUnneededContentFiles -CompressUpdates -DeclineExpiredUpdates | Out-File $Log -Append utf8
